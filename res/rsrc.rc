@@ -1,0 +1,90 @@
+// template v.1.5 (resource)
+#include "Resource.h"
+
+#define     IDI_ICON  100
+
+#define     IDD_DLG   200
+#define     IDD_NFO   201
+
+#define     IDC_IMG   300
+#define     IDS_NAME  301
+#define     IDS_SERIAL  302
+#define     IDS_VERID   303
+
+#define     IDE_NAME    400
+#define     IDE_SERIAL  401
+#define     IDE_VERSIONID    402
+#define     IDE_INF     403
+
+#define     IDB_GEN     410
+#define     IDB_CLOSE   411
+#define     IDB_INF     412
+#define     IDB_CLSNFO  413
+
+#define     IDR_INF   500
+#define     IDR_REL   501
+#define     IDR_RGN   502
+
+#define     IDR_MUS   600
+
+LANGUAGE 0, 0
+//icons
+IDI_ICON		ICON	DISCARDABLE     "res/icon.ico"
+
+//images/labels
+//IDC_IMG         BITMAP	DISCARDABLE     "res/image.bmp"
+
+//controls
+
+//release data
+IDR_INF 		RCDATA                    "res/info.txt"
+//IDR_REL		RCDATA                  "release.asm"
+
+//region file
+//IDR_RGN         RCDATA DISCARDABLE      "res/image.rgn"
+
+//music
+//IDR_MUS		RCDATA                  "res/music.xm"
+
+//dialogs
+IDD_DLG 	DIALOGEX	 6,6,365,120
+STYLE  WS_VISIBLE | DS_CENTER | DS_SYSMODAL
+FONT 7, "Tahoma",0,0,1
+BEGIN
+    
+    // LEFT, TOP, WIDTH, HEIGHT
+	//CONTROL	IDC_IMG,65335,STATIC,SS_BITMAP | SS_REALSIZEIMAGE,0,0,272,248
+
+	//name and serial inputs
+	CONTROL "Name:",IDS_NAME,STATIC,ES_READONLY, 9, 10, 50, 9
+    
+    CONTROL "Version ID:",IDS_VERID,STATIC,ES_READONLY, 9, 20, 50, 9
+    
+    CONTROL "Registration:",IDS_SERIAL,STATIC,ES_READONLY, 9, 30, 50, 9
+	
+	CONTROL	"",IDE_NAME,EDIT,ES_CENTER | ES_AUTOHSCROLL | WS_TABSTOP, 100, 10, 250, 9
+	CONTROL	"",IDE_VERSIONID,EDIT,ES_CENTER | ES_AUTOHSCROLL | WS_TABSTOP, 100, 20, 250, 9
+	
+	CONTROL	"",IDE_SERIAL, EDIT,ES_CENTER | ES_AUTOHSCROLL | WS_TABSTOP, 100, 30, 250, 9
+	// ES_CENTER = 00000001, ES_PASSWORD = 00000020, ES_READONLY = 00000800
+	// ES_NUMER  = 00002000, ES_UPPERCASE = 00000008, ES_AUTOSHCROLL = 00000080
+    
+	//buttons
+    CONTROL	"&Help", IDB_INF, BUTTON, BS_CENTER | BS_FLAT | BS_DEFPUSHBUTTON | WS_TABSTOP, 9, 60, 80, 9
+	CONTROL	"&Verify", IDB_GEN, BUTTON, BS_CENTER | BS_FLAT | WS_TABSTOP, 170, 60, 90, 9
+	CONTROL	"&Close", IDB_CLOSE, BUTTON, BS_CENTER | BS_FLAT | WS_TABSTOP, 262, 60, 90, 9
+	
+	CONTROL     "Asphyxia",0,STATIC,ES_READONLY | WS_DISABLED,9,80,50,9
+	CONTROL     "Defeating Earth's Gravity",1,STATIC,ES_READONLY | WS_DISABLED,269,80,150,9
+END
+
+// About box
+IDD_NFO DIALOGEX 0, 0, 170, 190
+STYLE DS_CENTER
+FONT 8, "Tahoma"
+BEGIN
+	//CONTROL "",IDE_INF,EDIT,ES_MULTILINE | ES_READONLY, 5, 5, 160, 120
+	CONTROL "",IDE_INF,STATIC,ES_READONLY, 5, 5, 160, 150
+	//EDITTEXT    IDE_INF,5,5,160,120,ES_MULTILINE | ES_READONLY
+	CONTROL	"&Close", IDB_CLSNFO, BUTTON,WS_TABSTOP | BS_PUSHBUTTON | BS_CENTER | BS_FLAT, 8, 145, 150, 9
+END
